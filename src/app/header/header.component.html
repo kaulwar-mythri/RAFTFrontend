@@ -1,0 +1,46 @@
+
+<div class="head" [ngClass]="getHeadClass()">
+<div class="head-content">
+    <div class="head-content-left">
+        <div class="search-container">
+            <div>
+                <h3>
+                  <a routerLink="/dashboard">Dashboard</a>  
+                  <span *ngFor="let word of pathWords; let last = last">
+                    >
+                    <a *ngIf="word !== 'dashboard'" [routerLink]="'/' + word">{{ word }}</a>
+                  </span>
+                </h3>
+              </div>              
+            
+            <!-- <div class="normal-search">
+                <i class="fa fa-search search-icon"></i>
+                <input type="search" class="search" name="" id="" placeholder="Search...">
+            </div> -->
+        </div>
+    </div>
+        <div class="head-content-right">
+            <!-- <div class="head-menu">
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple">
+                        <i class="far fa-bell menu-icon"></i>
+                    </button>
+                </div>
+            </div> -->
+            
+            <div class="head-user-avatar-container">
+                <div class="head-user-avatar">
+                    <div class="user-menu-container">
+                        <button class="mat-button" id="user-menu-trigger">
+                            <img id="user" src="../../assets/userLogo.png" alt="User Logo">
+                        </button>
+                        <div class="menu">
+                          <div id="profilee"><a href="/profile">Profile</a></div>
+                          <button (click)="logout()">LogOut</button>
+                        </div>
+                      </div>
+                      
+            </div>
+            <!-- app.component.html -->
+        </div>
+</div>

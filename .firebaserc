@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fir-3923e": {
+      "hosting": {
+        "raft": [
+          "fir-3923e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fir-3923e"
+  }
+}

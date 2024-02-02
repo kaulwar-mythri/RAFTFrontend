@@ -1,0 +1,32 @@
+// src/_theming.scss
+
+// @import '~@angular/material/core/theming/_theming.scss';
+
+// Define your custom palettes for light and dark themes
+$my-primary: mat.define-palette($mat-indigo);
+$my-accent: mat.define-palette($mat-pink);
+$my-warn: mat.define-palette($mat-red);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    warn: $my-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+$my-dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    warn: $my-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+// Include Angular Material themes
+@include angular-material-theme($my-theme);
+@include angular-material-theme($my-dark-theme);

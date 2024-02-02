@@ -1,0 +1,30 @@
+<!-- bench-candidates.component.html -->
+<span class="head-container">
+  <h2>Bench Candidates</h2>
+  <button mat-button (click)="openAddBenchCandidateDialog()" class="add-btn">Add Bench Candidate</button>
+</span>
+<button mat-button (click)="openAddBenchCandidateDialog()">Add Bench Candidates</button>
+<dx-data-grid
+    [dataSource]="benchCandidates"
+    [remoteOperations]="true"
+    [width]="'1380px'"
+    [height]="600"
+    [showBorders]="true"
+    (onEditingStart)="onEditingStart($event)"
+>
+ <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-editing mode="row" [allowUpdating]="true"></dxo-editing>
+    <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+    <dxi-column dataField="id" caption="Candidate ID"></dxi-column>
+    <dxi-column dataField="candidateName" caption="Candidate Name"></dxi-column>
+      <dxi-column dataField="candidateStatus" caption="Status"></dxi-column>
+      <dxi-column dataField="startDate" caption="Start Date"></dxi-column>
+      <dxi-column dataField="endDate" caption="End Date" alignment=''></dxi-column>
+    <dxi-column dataField="benchCandidateSkills" caption="Skills" ></dxi-column>
+    <dxi-column dataField="benchManager.name" caption="Bench Manager Name" [width]="200"></dxi-column>
+        <!-- <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail> -->
+</dx-data-grid>
+

@@ -1,0 +1,53 @@
+<!-- add-requirement-dialog.component.html -->
+<h2 class="dialog-title">Add Requirement</h2>
+<form [formGroup]="newRequirementForm" class="custom-form" (ngSubmit)="onSaveClick()">
+  <div class="form-field">
+    <label for="requirementId">Requirement ID*</label>
+    <input id="requirementId" type="number" formControlName="requirementId" required>
+  </div>
+
+  
+  <div class="form-field">
+    <label for="startDate">Start Date*</label>
+    <input id="startDate" type="date" formControlName="startDate" required>
+  </div>
+
+  <div class="form-field">
+    <label for="endDate">End Date*</label>
+    <input id="endDate" type="date" formControlName="endDate" required>
+    <div *ngIf="newRequirementForm.hasError('dateError', 'endDate')">
+      End date must be greater than start date.
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="requiredNo">Required No.*</label>
+    <input id="requiredNo" type="number" formControlName="requiredNo" required>
+  </div>
+
+  <div class="form-field">
+    <label for="jobDescription">Job Description*</label>
+    <input id="jobDescription" type="text" formControlName="jobDescription" required>
+  </div>
+
+  <div class="form-field">
+    <label for="hiringManager">Hiring Manager*</label>
+    <input id="hiringManager" type="text" formControlName="hiringManager" required>
+  </div>
+
+  <div class="form-field">
+    <label for="accountName">Account Name*</label>
+    <select id="accountName" formControlName="accountName">
+      <option *ngFor="let accountName of data.accountNames" [value]="accountName">
+
+        {{ accountName }}
+      </option>
+    </select>
+  </div>
+
+  <div class="dialog-actions">
+    <button type="button" class="cancel-button" (click)="onCancelClick()">Cancel</button>
+    <button type="submit" class="save-button">Save</button>
+  </div>
+</form>
+

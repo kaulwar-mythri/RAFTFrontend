@@ -1,0 +1,300 @@
+@use "@angular/material" as mat;
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat.define-palette(mat.$red-palette);
+
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-accent,
+      warn: $my-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+$dark-primary: mat.define-palette(mat.$indigo-palette, 700);
+$dark-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$dark-warn: mat.define-palette(mat.$red-palette);
+
+// Dark theme definition
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+    warn: $dark-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+*:not(i, span) {
+  font-family: 'Lexend', 'Arial Sans' !important;
+}
+
+// Apply dark theme to specific components
+.dark-theme {
+  @include mat.all-component-colors($dark-theme);
+
+  body {
+    background-color: #121212; // Dark background color for the entire page
+    color: #ffffff; // Text color for the entire page
+  }
+
+  // Add any additional styles specific to the dark theme
+}
+
+// Apply light theme to other components
+.light-theme {
+  @include mat.all-component-colors($my-theme);
+
+  body {
+    background-color: #f4f7fa; // Light background color for the entire page
+    color: #495057; // Text color for the entire page
+  }
+
+  // Add any additional styles specific to the light theme
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  background: #f4f7fa;
+  font-family: "Roboto", sans-serif;
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: 495057;
+  margin: 1.25rem 0 1.25rem 0;
+  box-shadow: 0 0.25rem 0.5rem #e6edef;
+
+  .card-head {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #edf1f7;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .card-body {
+    padding: 1rem 1.5rem;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.dx-column-indicators {
+  float: right !important;
+}
+.dx-datagrid-text-content {
+  float: left !important;
+  font-weight: 500 !important;
+  color: #0a0097;
+}
+/* Edit Link */
+$fa-edit-icon: "\f040"; /* FontAwesome Unicode for the edit icon */
+.dx-link-edit {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px; /* Adjust the padding as needed */
+  color: #007bff; /* Edit link color */
+  &::before {
+    content: $fa-edit-icon;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+/* Delete Link */
+$fa-delete-icon: "\f1f8"; /* FontAwesome Unicode for the delete icon */
+.dx-link-delete {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px; /* Adjust the padding as needed */
+  color: #dc3545 !important; /* Delete link color */
+  &::before {
+    content: $fa-delete-icon;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &:hover {
+    text-decoration: underline; /* Underline on hover, adjust as needed */
+  }
+}
+/* Save Link */
+$fa-save-icon: "\f0c7"; /* FontAwesome Unicode for the save icon */
+.dx-link-save {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  color: green !important;
+  &::before {
+    content: $fa-save-icon;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+/* Cancel Link */
+$fa-cancel-icon: "\f05e"; /* FontAwesome Unicode for the cancel icon */
+.dx-link-cancel {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px; /* Adjust the padding as needed */
+  &::before {
+    content: $fa-cancel-icon;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &:hover {
+    text-decoration: underline; /* Underline on hover, adjust as needed */
+  }
+}
+
+a {
+  text-decoration: none !important;
+}
+
+@keyframes cascade {
+  0% {
+    position: relative;
+    opacity: 0;
+    top: -10px;
+  }
+  100% {
+    position: relative;
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+tbody[role="presentation"] {
+  @for $i from 1 through 20 {
+    tr:not(.dx-header-row,.dx-datagrid-filter-row):nth-of-type(#{$i}) {
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: slideInFromLeft 0.2s ease-in-out forwards;
+      animation-delay: 0.07s * $i;
+    }
+}
+
+  tr:not(.dx-header-row,.dx-datagrid-filter-row):nth-child(odd) {
+    background-color: #f4f7fa;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+    scale: 0.95;
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0px);
+    scale: 1.05;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    scale: 1;
+  }
+}
+
+table tbody {
+  border-radius: 10px !important;
+}
+
+.mat-mdc-dialog-container {
+  max-height: 80vh !important;
+}
+
+/* Add this SCSS code to your styles.scss or your component's SCSS file */
+* {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #67676750;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Change this to your desired background color */
+  }
+  
+  /* Optional: Hover effect for the thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: darken(#0a0097, 10%);
+  }
+  
+  /* Optional: Transition effect for smooth changes */
+  ::-webkit-scrollbar-thumb {
+    transition: background-color 0.3s;
+  }
+}
+
+// donut
+
+.legend-items {
+  padding: 20px;
+}
+
+/* Style for the total label */
+.total-label {
+  padding-top: 15px;
+}
+
+.item-label{
+  padding-top: 25px;
+}
+.total-label{
+  display: none; 
+}
+.total-value{
+  display: none;
+}
+.item-percent{
+  padding-top: 15px;
+}

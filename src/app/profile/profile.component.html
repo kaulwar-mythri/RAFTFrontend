@@ -1,0 +1,15 @@
+<div class="profile-page">
+  <div class="content">
+    <div class="content__title">
+      <img src="../../assets/profi.png" alt="User Avatar" class="avatar-icon" />
+      <h1>{{ user.name }}</h1>
+      <span>{{ user.emailId }}</span>
+    </div>
+    <div class="content__description">
+      <p><b>ID:</b>{{ user.employeeId }}</p>
+      <p><b>ACCOUNTS:</b> {{ user.accounts }}</p>
+      <p><b>ROLE:</b> {{ user.role }}</p>
+    </div>
+  </div>
+  <app-logout></app-logout>
+</div>

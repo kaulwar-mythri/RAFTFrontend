@@ -1,0 +1,5 @@
+<div *ngIf="isAuthenticated() && _dataService.canAccessMainComponents && !_dataService.isUserDeafult">
+    <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+    <app-header [collapsed] = "isSideNavCollapsed" [screenWidth] = "screenWidth"></app-header>    
+</div>
+<app-body [collapsed] = "isSideNavCollapsed" [screenWidth] = "screenWidth"></app-body>

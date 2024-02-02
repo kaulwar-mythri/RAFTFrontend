@@ -1,0 +1,21 @@
+
+  
+    button {
+      padding: 8px 16px;
+      background-color: #0a0097;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+
+
+  .default{
+    justify-content: center;
+    text-align: center;
+  }
+  

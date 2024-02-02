@@ -1,0 +1,49 @@
+/* bench-candidates.component.scss */
+@import 'devextreme/dist/css/dx.common.css';
+@import 'devextreme/dist/css/dx.light.css';
+
+
+.head-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100% !important;
+  flex-wrap: wrap;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #0a0097 !important;
+}
+
+ .add-btn {
+  display: flex;
+  background-color: #0a0097 !important;
+  color: #ffffff !important;
+  transition: 0.1s;
+ }
+ /* requirements.component.scss */
+
+.add-btn:hover {
+  background-color: #06005f !important; /* Darken the color on hover */
+}
+
+.add-btn:active {
+  scale: 0.93 !important;
+}
+
+
+ .header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+ }
+
+ #dx-col-7{
+  min-width: 200px !important;
+  width: 200px !important;
+ }
+
+ 
+

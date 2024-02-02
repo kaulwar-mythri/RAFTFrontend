@@ -1,0 +1,43 @@
+<!-- add-requirement-dialog.component.html -->
+
+<form [formGroup]="newUserForm" class="custom-form" (ngSubmit)="onSaveClick()">
+  <div class="form-field">
+    <label for="employeeId">Employee ID</label>
+    <input matInput formControlName="employeeId" type="text" required>
+  </div>
+
+  <div class="form-field">
+    <label for="name">Name</label>
+    <input matInput formControlName="name" type="text" required>
+  </div>
+
+  <div class="form-field">
+    <label for="emailId">Email ID</label>
+    <input matInput formControlName="emailId" type="email" required>
+  </div>
+
+  <div class="form-field">
+    <label for="accountName">Role</label>
+    <select formControlName="accountName">
+      <option *ngFor="let role of data.roles" [value]="role" aria-required="true">
+        {{ role }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="accountName">Accounts</label>
+    <select formControlName="accountName">
+      <option *ngFor="let accountName of data.accountNames" [value]="accountName">
+        {{ accountName }}
+      </option>
+    </select>
+  </div>
+
+<div class="dialog-actions">
+  <button type="button" class="cancel-button" (click)="onCancelClick()">Cancel</button>
+  <button type="submit" class="save-button">Save</button>
+</div>
+</form>
+
+

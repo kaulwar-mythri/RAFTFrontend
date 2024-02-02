@@ -1,0 +1,42 @@
+
+<h2 class="dialog-title">Add Fulfillment</h2>
+<form [formGroup]="newFulfillmentForm" class="custom-form" (ngSubmit)="onSaveClick()">
+  <div class="form-field">
+    <label for="fulfillmentId">Fulfillment ID</label>
+  <input id="fulfillmentId" type="number" formControlName="fulfillmentId" required>
+
+</div>
+
+<div class="form-field">
+  <label for="fulfillmentDate">Fulfillment Date</label>
+  <input id="fulfillmentDate" type="date" formControlName="fulfillmentDate" required>
+</div>
+
+<div class="form-field">
+  <label for="submission">Submission</label>
+  <select id="submission" formControlName="submission">
+    <!-- Assuming 'data.displaySubmissions' is an array of options -->
+    <option *ngFor="let submission of data.displaySubmissions" [value]="submission">
+      {{ submission }}
+    </option>
+  </select>
+</div>  
+
+<div class="form-field">
+  <label for="fulfillmentStatus">Fulfillment Status</label>
+  <select id="fulfillmentStatus" formControlName="fulfillmentStatus">
+    <!-- Assuming 'data.fulfillmentStatus' is an array of options -->
+    <option *ngFor="let status of data.fulfillmentStatus" [value]="status">
+      {{ status }}
+    </option>
+  </select>
+
+</div>  
+
+<div class="dialog-actions">
+  <button type="button" class="cancel-button" (click)="onCancelClick()">Cancel</button>
+  <button type="submit" class="save-button">Save</button>
+</div>
+
+</form>
+

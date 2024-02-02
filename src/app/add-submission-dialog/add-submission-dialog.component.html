@@ -1,0 +1,54 @@
+<!-- Add Submission Dialog Title -->
+<h2 class="dialog-title">Add Submission</h2>
+
+<!-- Form Content -->
+<form  [formGroup]="newSubmissionForm" class="custom-form" (ngSubmit)="onSaveClick()">
+  <div class="form-field">
+    <label for="submissionId">Submission ID</label>
+    <input id="submissionId" formControlName="submissionId" type="number" required>
+  </div>
+
+  <div class="form-field">
+    <label for="submissionDate">Submission Date</label>
+    <input id="submissionDate" formControlName="submissionDate" type="date" required>
+  </div>
+
+  <div class="form-field">
+    <label for="feedback">Feedback</label>
+    <input id="feedback"  formControlName="feedback" type="text" required>
+  </div>
+
+  <!-- Submission Status -->
+  <div class="form-field">
+    <label for="submissionStatus">Submission Status</label>
+    <select id="submissionStatus" formControlName="submissionStatus">
+      <option *ngFor="let status of data.submissionStatuses" [value]="status">
+        {{ status }}
+      </option>
+    </select>
+  </div>
+  <div class="form-field">
+    <label for="candidateName">Bench Candidate Name</label>
+    <select id="candidateName" formControlName="benchCandidateName">
+      <option *ngFor="let benchCandidateName of data.benchCandidateNames" [value]="benchCandidateName">
+        {{ benchCandidateName }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Requirement ID -->
+  <div class="form-field">
+    <label for="requirementId">Requirement ID</label>
+    <select id="requirementId" formControlName="requirementId">
+      <option *ngFor="let requirementId of data.requirementIds" [value]="requirementId">
+        {{ requirementId }}
+      </option>
+    </select>
+  </div>
+
+<!-- Dialog Actions -->
+<div class="dialog-actions">
+  <button type="button" class="cancel-button" (click)="onCancelClick()">Cancel</button>
+  <button type="submit" class="save-button">Save</button>
+</div>
+</form>

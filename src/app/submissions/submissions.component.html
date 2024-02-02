@@ -1,0 +1,27 @@
+<!-- submission.component.html -->
+<span class="head-container">
+    <h2>Submissions</h2>
+    <button mat-button (click)="openAddSubmissionDialog()" class="add-btn">Add Submission</button>
+</span>    
+<dx-data-grid
+    [dataSource]="submissions"
+    [remoteOperations]="true"
+    [width]="'1380px'"
+    [height]="600"
+    (onEditingStart)="onEditingStart($event)"
+    [showBorders]="true">
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-editing mode="row"  [allowUpdating]="true" ></dxo-editing>
+    <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+    <dxi-column dataField="submissionId" caption="Submission ID"></dxi-column>
+    <dxi-column dataField="submissionDate" caption="Submission Date"></dxi-column>
+    <dxi-column dataField="feedback" caption="Feedback"></dxi-column>
+    <dxi-column dataField="submissionStatus" caption="Submission Status"></dxi-column>
+    <dxi-column dataField="requirement.requirementId" caption="Requirement ID"></dxi-column>
+    <dxi-column dataField="requirement.account.name" caption="Account Name"></dxi-column>
+    <dxi-column dataField="benchCandidate.candidateName" caption="Bench Candidate Name" [width]="220"></dxi-column>
+   <!-- <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail> -->
+</dx-data-grid>

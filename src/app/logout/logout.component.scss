@@ -1,0 +1,25 @@
+
+button {
+    background-color: #0a0097; 
+    color: #fff; 
+    margin-top: 10px;
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+  
+    &:hover {
+      background-color: red; 
+    }
+  
+    &:focus {
+      outline: none; 
+    }
+  
+    &:active {
+      background-color: #922b21; // Darker red on click
+    }
+  
+    // Add more styles as needed, such as transitions, box-shadow, etc.
+  }
+  
