@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "raft",
     "public": "dist",
     "ignore": [
       "firebase.json",
