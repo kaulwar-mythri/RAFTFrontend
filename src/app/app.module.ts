@@ -43,6 +43,7 @@ import { SubmissionChartComponent } from './submission-chart/submission-chart.co
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { environment } from '../environments/environment';
+import { FulfillmentChartComponent } from './fulfillment-chart/fulfillment-chart.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { environment } from '../environments/environment';
     AddFulfillmentDialogComponent,
     DefaultUserPageComponent,
     DonutChartComponent,
-    SubmissionChartComponent
+    SubmissionChartComponent,
+    FulfillmentChartComponent
   ],
   imports: [
     BrowserModule,

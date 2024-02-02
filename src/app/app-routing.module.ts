@@ -15,6 +15,7 @@ import { Role } from './interfaces/Role';
 import { DefaultUserPageComponent } from './default-user-page/default-user-page.component';
 import { DonutChartComponent } from './donut-chart/donut-chart.component';
 import { SubmissionChartComponent } from './submission-chart/submission-chart.component';
+import { FulfillmentChartComponent } from './fulfillment-chart/fulfillment-chart.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,9 @@ const routes: Routes = [
   {
     path: 'chart-submission', component: SubmissionChartComponent,
   },
+  {
+    path:'app-fulfillment-chart', component: FulfillmentChartComponent
+  }
 ];
 
 @NgModule({

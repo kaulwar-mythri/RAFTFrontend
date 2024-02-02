@@ -2,7 +2,7 @@
     <a *ngFor="let data of dashData" [routerLink]="[data.routerLink]" class="card" routerLinkActive = "inactive"
     [routerLinkActiveOptions]="{exact: true}">
         <div class="card-content">
-            <i class="sidenav-link-icon" [class]="data.icon"></i>
+            <div><i class="sidenav-link-icon" [class]="data.icon"></i></div>
             <p class="card-title">{{data.label}}</p>
         </div>
     </a>
