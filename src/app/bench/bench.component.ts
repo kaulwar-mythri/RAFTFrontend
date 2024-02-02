@@ -8,6 +8,7 @@ import { User } from '../interfaces/User';
 import { UserService } from '../services/user.service';
 import { BenchCandidateStatus } from '../interfaces/BenchCandidateStatus';
 import { Role } from '../interfaces/Role';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-bench-candidates',
   templateUrl: './bench.component.html',
@@ -16,7 +17,7 @@ import { Role } from '../interfaces/Role';
 export class BenchCandidatesComponent implements OnInit {
   benchCandidates: BenchCandidate[] = [];
   users: User[] = [];
-  constructor( private benchService : BenchService , public dialog: MatDialog , private userService : UserService) {
+  constructor(private snackBar: MatSnackBar, private benchService : BenchService , public dialog: MatDialog , private userService : UserService) {
   }
   ngOnInit(): void {
     this.fetchCandidates();
@@ -61,10 +62,12 @@ export class BenchCandidatesComponent implements OnInit {
               this.fetchCandidates();
             },
             (error) =>{
+              this.openSnackBar("Error while creating candidate")
               console.error("error while creating candidate" , error);
             }
           );
         }else{
+          this.openSnackBar("Selected bench manager not found")
           console.error('selected bench manager not found');
         }
       }
@@ -103,13 +106,21 @@ export class BenchCandidatesComponent implements OnInit {
               this.fetchCandidates();
             },
             (error) => {
+              this.openSnackBar("Error updating bench candidate")
               console.error('Error updating bench candidate:', error);
             }
           );
         } else {
+          this.openSnackBar("Selected bench manager not found")
           console.error('Selected bench manager not found');
         }
       }
     });
 }
+openSnackBar(message: string): void {
+  this.snackBar.open(message, 'Close', {
+    duration: 5000,
+    panelClass: ['snackbar-success']
+  });
+} 
 }

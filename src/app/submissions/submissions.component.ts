@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BenchService } from '../services/bench-candidate.service';
 import { AddSubmissionDialogComponent } from '../add-submission-dialog/add-submission-dialog.component';
 import { SubmissionStatus } from '../interfaces/SubmissionStatus';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-submissions',
@@ -19,7 +20,7 @@ export class SubmissionsComponent {
   benchCandidates: BenchCandidate[] = [];
   requirements:Requirement[]=[];
   selectedSubmission!:Submission;
-  constructor(private submissionService: SubmissionService,private requirementService : RequirementService,private benchCandidateService: BenchService,public dialog: MatDialog){};
+  constructor(private snackBar: MatSnackBar, private submissionService: SubmissionService,private requirementService : RequirementService,private benchCandidateService: BenchService,public dialog: MatDialog){};
   
   ngOnInit(){
     this.fetchSubmission();
@@ -68,6 +69,7 @@ export class SubmissionsComponent {
           
           console.log("Result",result);
         } else {
+          this.openSnackBar('Selected bench candidate not found')
           console.error('Selected bench candidate not found');
         }
 if(selectedRequirement){
@@ -84,6 +86,7 @@ else{
               this.fetchSubmission();
             },
             (error) => {
+              this.openSnackBar("Error inserting submission")
               console.error('Error inserting submission:', error);
             }
           );
@@ -117,6 +120,7 @@ else{
                       delete result.benchCandidateName;
                       console.log("Result",result);
                     } else {
+                      this.openSnackBar('Selected bench candidate not found')
                       console.error('Selected bench candidate not found');
                     }
 
@@ -126,6 +130,7 @@ else{
             
             }
             else{
+              this.openSnackBar('Selected requirement not found')
               console.error("Selected requirement not found");
             }
 
@@ -135,6 +140,7 @@ else{
                 this.fetchSubmission();
               },
               (error) => {
+                this.openSnackBar('Error updating submission')
                 console.error('Error updating submission:', error);
               }
             );
@@ -142,6 +148,13 @@ else{
         }
       });
     }
+
+    openSnackBar(message: string): void {
+      this.snackBar.open(message, 'Close', {
+        duration: 5000,
+        panelClass: ['snackbar-success']
+      });
+    } 
 }
 
 

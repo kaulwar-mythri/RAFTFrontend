@@ -67,6 +67,7 @@ export class RequirementsComponent {
               this.fetchRequirements();
             },
             (error) => {
+              this.openSnackBar('Error inserting requirement')
               console.error('Error inserting requirement:', error);
             }
           );
@@ -108,6 +109,7 @@ export class RequirementsComponent {
               this.fetchRequirements();
             },
             (error) => {
+              this.openSnackBar('Error inserting requirement')
               console.error('Error inserting requirement:', error);
             }
           );
@@ -126,6 +128,7 @@ export class RequirementsComponent {
           this.fetchRequirements();
         },
         (error) => {
+          this.openSnackBar('Error removing requirement')
           console.error('Error removing requirement:', error);
         }
       );

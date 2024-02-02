@@ -9,6 +9,7 @@ import { BenchService } from '../services/bench-candidate.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddFulfillmentDialogComponent } from '../add-fulfillment-dialog/add-fulfillment-dialog.component';
 import { FulfillmentStatus } from '../interfaces/FulfillmentStatus';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-fulfillment',
@@ -21,7 +22,7 @@ export class FulfillmentsComponent implements OnInit {
   // pageSize: number = 2;
   // currentPageIndex: number = 1;
   // allowedPageSizes: number[] = [2, 4, 6];
-  constructor(private fulfillmentService : FulfillmentsService, private submissionService : SubmissionService, private benchService : BenchService, public dialog: MatDialog){}
+  constructor(private snackBar: MatSnackBar, private fulfillmentService : FulfillmentsService, private submissionService : SubmissionService, private benchService : BenchService, public dialog: MatDialog){}
   ngOnInit(): void {
     this.fetchFulfillments();
   }
@@ -81,10 +82,12 @@ export class FulfillmentsComponent implements OnInit {
               this.fetchFulfillments();
             },
             (error) => {
+              this.openSnackBar("Selected submission not found")
               console.error('Error inserting fulfillment:', error);
             }
           );
         } else {
+          this.openSnackBar("Selected submission not found")
           console.error('Selected submission not found');
         }
       }
@@ -128,13 +131,22 @@ export class FulfillmentsComponent implements OnInit {
                   this.fetchFulfillments();
                 },
                 (error) => {
+                  this.openSnackBar("Error inserting fulfillment")
                   console.error('Error inserting fulfillment:', error);
                 }
               );
             } else {
+              this.openSnackBar("Selected submission not found")
               console.error('Selected submission not found');
             }
           }
         });
+  } 
+
+  openSnackBar(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 5000,
+      panelClass: ['snackbar-success']
+    });
   } 
 }
